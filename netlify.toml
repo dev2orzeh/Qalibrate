@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Proxy Odoo CRM JSON-RPC API requests to eliminate browser CORS
+[[redirects]]
+  from = "/api/odoo/*"
+  to = "https://orzehcrm.odoo.com/:splat"
+  status = 200
+  force = true
+
+# Single Page Application (SPA) routing fallback for /book and hash routes
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

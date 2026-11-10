@@ -13,10 +13,8 @@ const TARGET_EMAIL = import.meta.env.VITE_NOTIFICATION_EMAIL || "odoo@qalibrates
 const ODOO_DB = import.meta.env.VITE_ODOO_DB || "orzehcrm";
 const ODOO_USER = import.meta.env.VITE_ODOO_USERNAME || "sales@orzeh.tech";
 const ODOO_PASS = import.meta.env.VITE_ODOO_PASSWORD || "1Pakistan123!";
-// In dev, use the Vite proxy path '/api/odoo' to prevent CORS; in production use full URL or serverless route
-const ODOO_ENDPOINT = typeof window !== 'undefined' && window.location.hostname === 'localhost'
-  ? '/api/odoo/jsonrpc'
-  : (import.meta.env.VITE_ODOO_URL ? `${import.meta.env.VITE_ODOO_URL}/jsonrpc` : 'https://orzehcrm.odoo.com/jsonrpc');
+// Unified endpoint: proxies to https://orzehcrm.odoo.com/jsonrpc via Vite in dev and Netlify in production (eliminates CORS)
+const ODOO_ENDPOINT = '/api/odoo/jsonrpc';
 
 /**
  * Helper to call Odoo JSON-RPC API
