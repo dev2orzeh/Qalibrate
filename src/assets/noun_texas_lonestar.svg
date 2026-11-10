@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" fill="currentColor">
+  <!-- Architectural Silhouette: Texas State Capitol & Modern Innovation Skyline -->
+  <g>
+    <!-- Goddess of Liberty / Spire Peak -->
+    <rect x="74" y="14" width="2" height="8"/>
+    <circle cx="75" cy="13" r="2"/>
+
+    <!-- Central Capitol Dome & Lantern -->
+    <polygon points="72,22 78,22 77,28 73,28"/>
+    <path d="M66,42 C66,32 70,28 75,28 C80,28 84,32 84,42 Z"/>
+    
+    <!-- Dome Base & Arch Columns -->
+    <rect x="63" y="42" width="24" height="6"/>
+    <rect x="65" y="48" width="20" height="10"/>
+    <rect x="62" y="58" width="26" height="4"/>
+
+    <!-- Portico Pediment & Grand Columns -->
+    <polygon points="75,62 58,74 92,74"/>
+    <rect x="60" y="74" width="30" height="3"/>
+    
+    <!-- Classical Colonnade -->
+    <rect x="62" y="77" width="3" height="32"/>
+    <rect x="69" y="77" width="3" height="32"/>
+    <rect x="78" y="77" width="3" height="32"/>
+    <rect x="85" y="77" width="3" height="32"/>
+
+    <!-- Left Wing -->
+    <polygon points="34,84 60,84 60,135 34,135"/>
+    <rect x="30" y="92" width="8" height="43"/>
+    <!-- Austin High-Tech Modern Tower Left -->
+    <polygon points="20,102 28,95 28,135 20,135"/>
+
+    <!-- Right Wing -->
+    <polygon points="90,84 116,84 116,135 90,135"/>
+    <rect x="112" y="92" width="8" height="43"/>
+    <!-- Austin High-Tech Modern Tower Right -->
+    <polygon points="122,98 130,90 130,135 122,135"/>
+
+    <!-- Lone Star Emblem in Center Foundation -->
+    <polygon points="75,112 77.5,118 84,118 79,122 81,128 75,124 69,128 71,122 66,118 72.5,118"/>
+
+    <!-- Base Plinth -->
+    <rect x="14" y="135" width="122" height="5" rx="1"/>
+  </g>
+</svg>
