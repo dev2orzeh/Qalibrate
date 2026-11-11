@@ -3,8 +3,10 @@ import { faqList } from '../../data/content';
 import { ChevronDown, Search, ArrowRight, MessageCircle } from 'lucide-react';
 import WhatsAppIcon from '../common/WhatsAppIcon';
 import Reveal, { MaskRise } from '../common/Reveal';
+import { useRegion } from '../../context/RegionContext';
 
 export default function FaqSection({ onOpenConsultation }) {
+  const { region, isPakistan } = useRegion();
   const [openIndex, setOpenIndex] = useState(-1);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -18,7 +20,11 @@ export default function FaqSection({ onOpenConsultation }) {
   };
 
   const handleWhatsApp = () => {
-    const text = encodeURIComponent("Hello Qalibrate, I have a specific question about Odoo ERP licensing and implementation in Pakistan, Dubai, or Texas.");
+    const text = encodeURIComponent(
+      isPakistan 
+        ? "Hello Qalibrate, I have a specific question about Odoo ERP licensing and implementation in Pakistan." 
+        : "Hello Qalibrate, I have a specific question about Odoo ERP licensing and implementation in Pakistan, Dubai, or Texas."
+    );
     window.open(`https://wa.me/923001234567?text=${text}`, '_blank');
   };
 
@@ -41,7 +47,9 @@ export default function FaqSection({ onOpenConsultation }) {
             </h2>
 
             <p className="mt-5 text-base sm:text-lg text-dark/70 leading-relaxed font-normal max-w-xl mx-auto">
-              Straight answers on fit, scope, licensing, multi-region localization (Pakistan, UAE & US), and AI automation.
+              {isPakistan 
+                ? "Straight answers on fit, scope, licensing, Pakistani FBR digital invoicing, and localized enterprise rollout." 
+                : "Straight answers on fit, scope, licensing, multi-region localization (Pakistan, UAE & US), and AI automation."}
             </p>
 
             {/* Quick Search Input */}

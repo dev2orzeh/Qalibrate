@@ -12,43 +12,51 @@ import AboutEntity from './components/sections/AboutEntity';
 import Footer from './components/sections/Footer';
 import BookingPage from './components/pages/BookingPage';
 import ConsultationModal from './components/common/ConsultationModal';
+import { RegionProvider, useRegion } from './context/RegionContext';
 
-export default function App() {
+function AppContent() {
+  const { region, setRegionByPath } = useRegion();
+
   const [currentView, setCurrentView] = useState(() => {
     if (typeof window !== 'undefined') {
-      return (window.location.pathname === '/book' || window.location.hash === '#book') 
-        ? 'booking' 
-        : 'home';
+      const path = window.location.pathname.toLowerCase();
+      if (path === '/book' || path === '/pk/book' || window.location.hash === '#book') {
+        return 'booking';
+      }
     }
     return 'home';
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Synchronize browser history (Back / Forward button support)
+  // Synchronize browser history and path changes
   useEffect(() => {
     const handlePopState = () => {
-      const isBooking = window.location.pathname === '/book' || window.location.hash === '#book';
+      const path = window.location.pathname.toLowerCase();
+      setRegionByPath(path);
+      const isBooking = path === '/book' || path === '/pk/book' || window.location.hash === '#book';
       setCurrentView(isBooking ? 'booking' : 'home');
     };
 
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
+  }, [setRegionByPath]);
 
-  // Navigate to dedicated consultation booking page
+  // Navigate to consultation booking page with active region path
   const handleOpenConsultation = () => {
     setCurrentView('booking');
-    if (window.location.pathname !== '/book') {
-      window.history.pushState(null, '', '/book');
+    const targetBookPath = region.regionPath ? `${region.regionPath}/book` : '/book';
+    if (window.location.pathname !== targetBookPath) {
+      window.history.pushState(null, '', targetBookPath);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Navigate back to home view (or to a specific anchor like #services)
+  // Navigate back to home view (or to a specific anchor)
   const handleNavigateHome = (targetHash = '') => {
     setCurrentView('home');
-    window.history.pushState(null, '', '/' + (targetHash || ''));
+    const basePath = region.regionPath || '/';
+    window.history.pushState(null, '', basePath + (targetHash || ''));
     if (targetHash) {
       setTimeout(() => {
         const el = document.querySelector(targetHash);
@@ -67,7 +75,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-bone text-dark antialiased selection:bg-accent selection:text-white flex flex-col justify-between">
-      {/* Floating Header (Unchanged, seamless across home & booking views) */}
+      {/* Floating Header */}
       <Navbar 
         onOpenConsultation={handleOpenConsultation} 
         onNavigateHome={handleNavigateHome}
@@ -102,5 +110,13 @@ export default function App() {
         onClose={handleCloseModal} 
       />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <RegionProvider>
+      <AppContent />
+    </RegionProvider>
   );
 }

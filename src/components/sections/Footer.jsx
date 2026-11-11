@@ -2,6 +2,7 @@ import React from 'react';
 import Reveal from '../common/Reveal';
 import WhatsAppIcon from '../common/WhatsAppIcon';
 import OdooPartnerBadge from '../common/OdooPartnerBadge';
+import { useRegion } from '../../context/RegionContext';
 import qalibrateWhiteLogo from '../../assets/logo-full-white.png';
 import { ArrowUpRight, ArrowUp, MapPin } from 'lucide-react';
 
@@ -10,6 +11,7 @@ import { ArrowUpRight, ArrowUp, MapPin } from 'lucide-react';
 /* ========================================================================= */
 
 export default function Footer({ onOpenConsultation }) {
+  const { region, isPakistan } = useRegion();
   const odooServices = [
     { name: "Enterprise Implementation", href: "#services" },
     { name: "Custom Module Development", href: "#services" },
@@ -109,30 +111,18 @@ export default function Footer({ onOpenConsultation }) {
               {/* Physical Deployment Hubs */}
               <div className="pt-6 border-t border-white/10">
                 <div className="text-[11px] font-mono uppercase tracking-widest text-white/40 mb-3 font-semibold">
-                  Global Deployment Hubs
+                  {isPakistan ? "Pakistan Deployment Hubs" : "Global Deployment Hubs"}
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-white/70">
-                  <div className="flex items-start gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-white/60 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-white font-medium">Pakistan</div>
-                      <div className="text-white/50">Islamabad & Lahore</div>
+                  {region.hubs.slice(0, 3).map((hub) => (
+                    <div key={hub.id} className="flex items-start gap-2">
+                      <MapPin className="w-3.5 h-3.5 text-white/60 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <div className="text-white font-medium">{hub.name}</div>
+                        <div className="text-white/50">{hub.detail}</div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-white/60 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-white font-medium">Dubai</div>
-                      <div className="text-white/50">UAE Regional Hub</div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-white/60 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-white font-medium">Texas</div>
-                      <div className="text-white/50">US Operations</div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
 

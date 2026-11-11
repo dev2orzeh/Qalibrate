@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Clock, MessageSquare } from 'luc
 import WhatsAppIcon from '../common/WhatsAppIcon';
 import OdooPartnerBadge from '../common/OdooPartnerBadge';
 import Reveal, { MaskRise } from '../common/Reveal';
+import { useRegion } from '../../context/RegionContext';
 import { submitConsultationLead } from '../../services/formSubmission';
 
 /* ========================================================================= */
@@ -10,6 +11,7 @@ import { submitConsultationLead } from '../../services/formSubmission';
 /* ========================================================================= */
 
 export default function ContactSection({ onOpenConsultation }) {
+  const { region, isPakistan } = useRegion();
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -57,7 +59,7 @@ export default function ContactSection({ onOpenConsultation }) {
                   <div className="mb-5 sm:mb-6">
                     <OdooPartnerBadge 
                       theme="light" 
-                      text="Official Odoo Partner · Pakistan · Dubai · Texas" 
+                      text={isPakistan ? "Official Odoo Partner · Pakistan" : "Official Odoo Partner · Pakistan · Dubai · Texas"} 
                     />
                   </div>
 
@@ -85,7 +87,7 @@ export default function ContactSection({ onOpenConsultation }) {
                     </div>
                     <div className="flex items-center gap-3">
                       <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0" />
-                      <span>Multi-region team · Pakistan, Dubai & Texas · Your time zone</span>
+                      <span>{isPakistan ? "On-site deployment team · Lahore, Khi & Isb · In-person handover" : "Multi-region team · Pakistan, Dubai & Texas · Your time zone"}</span>
                     </div>
                   </div>
                 </div>

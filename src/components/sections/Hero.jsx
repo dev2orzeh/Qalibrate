@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useRegion } from '../../context/RegionContext';
 import odooLogo from '../../assets/new_logos/odoo.png';
 import shopifyLogo from '../../assets/new_logos/shopify.png';
 import stripeLogo from '../../assets/new_logos/stripe.png';
@@ -109,6 +110,7 @@ function HeroWord({ children, delay, className = '' }) {
 }
 
 export default function Hero({ onOpenConsultation }) {
+  const { region } = useRegion();
   const trustSectionRef = useRef(null);
   const [trustVisible, setTrustVisible] = useState(false);
 
@@ -205,7 +207,7 @@ export default function Hero({ onOpenConsultation }) {
           {/* Institutional Status Bar (Appears on scroll as requested) */}
           <div className="pb-8 sm:pb-10 mb-8 sm:mb-10 border-b border-dark/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4 text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-dark/50 font-medium">
             <div>Institutional Engineering</div>
-            <div>Official Odoo Partner · Pakistan · Dubai · Texas</div>
+            <div>{region.heroStatus}</div>
           </div>
 
           {/* Subtle Centered Header */}

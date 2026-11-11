@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRegion } from '../../context/RegionContext';
 import {
   ArrowRight,
   CheckCircle2,
@@ -145,6 +146,7 @@ const RADAR_AVATARS = [
 ];
 
 export default function BookingPage({ onNavigateHome }) {
+  const { region, isPakistan } = useRegion();
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hoveredAvatar, setHoveredAvatar] = useState(null);
@@ -231,7 +233,9 @@ export default function BookingPage({ onNavigateHome }) {
                 </span>
               </div>
               <p className="text-xs sm:text-[13px] text-dark/60 mt-2 max-w-xs font-normal leading-relaxed">
-                Direct senior architect advisory. Connect with our engineering leads across Pakistan, Dubai, and Texas.
+                {isPakistan
+                  ? "Direct senior architect advisory. Connect with our engineering leads across Lahore, Karachi, and Islamabad."
+                  : "Direct senior architect advisory. Connect with our engineering leads across Pakistan, Dubai, and Texas."}
               </p>
             </div>
 

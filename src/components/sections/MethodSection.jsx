@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useRegion } from '../../context/RegionContext';
 import { 
   ArrowRight, 
   Lightbulb, 
@@ -80,6 +81,7 @@ const methodSteps = [
 ];
 
 export default function MethodSection({ onOpenConsultation }) {
+  const { region, isPakistan } = useRegion();
   const [revealedCount, setRevealedCount] = useState(0);
   const containerRef = useRef(null);
   const roadmapRef = useRef(null);
@@ -381,7 +383,9 @@ export default function MethodSection({ onOpenConsultation }) {
         {/* ======================================================== */}
         <div className="mt-12 sm:mt-18 pt-8 border-t border-dark/10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="text-xs font-mono text-dark/60 tracking-wide text-center sm:text-left">
-            Fixed scope · Clear milestones · Hands-on training included across Pakistan, Dubai & Texas
+            {isPakistan
+              ? "Fixed scope · Clear milestones · Hands-on training included across Lahore, Karachi & Islamabad"
+              : "Fixed scope · Clear milestones · Hands-on training included across Pakistan, Dubai & Texas"}
           </div>
 
           <button

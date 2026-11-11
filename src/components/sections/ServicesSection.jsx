@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useId } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Reveal from '../common/Reveal';
+import { useRegion } from '../../context/RegionContext';
 
 /* ========================================================================= */
 /* TWO PRACTICES DATA (Master Brief 1:1 Match)                               */
@@ -257,6 +258,7 @@ const getCircularDiff = (index, active, total) => {
 /* ========================================================================= */
 
 export default function ServicesSection({ onOpenConsultation }) {
+  const { region, isPakistan } = useRegion();
   const [practice, setPractice] = useState('odoo'); // 'odoo' | 'ai'
   const [activeIdx, setActiveIdx] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -592,7 +594,9 @@ export default function ServicesSection({ onOpenConsultation }) {
         <Reveal direction="up" delay={200}>
           <div className="mt-12 sm:mt-16 pt-8 border-t border-dark/10 flex flex-col sm:flex-row items-center justify-between gap-6">
             <p className="text-xs sm:text-sm font-mono text-dark/60 max-w-2xl text-center sm:text-left">
-              Fixed Scope · Milestone Signoff · Direct Senior Architect Access Across Pakistan, Dubai & Texas
+              {isPakistan
+                ? "Fixed Scope · Milestone Signoff · Direct Senior Architect Access Across Lahore, Karachi & Islamabad"
+                : "Fixed Scope · Milestone Signoff · Direct Senior Architect Access Across Pakistan, Dubai & Texas"}
             </p>
             <button
               type="button"

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import Reveal from '../common/Reveal';
+import { useRegion } from '../../context/RegionContext';
 
 /* ========================================================================= */
 /* WHY QALIBRATE — 3D SCROLL-CALIBRATING GYROSCOPE (LIGHT THEME)             */
@@ -75,11 +76,27 @@ const projectInclusions = [
 ];
 
 export default function WhyUsSection({ onOpenConsultation }) {
+  const { region, isPakistan } = useRegion();
   const sectionRef = useRef(null);
   const mobilePillarsRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeNode, setActiveNode] = useState(null);
   const [revealedPillars, setRevealedPillars] = useState(0);
+
+  // Dynamic pillars adapting to active region
+  const activePillars = pillars.map(p => {
+    if (p.num === "5") {
+      return {
+        ...p,
+        title: isPakistan ? "ON THE GROUND IN PAKISTAN" : "MULTI-REGION TEAM, REAL SUPPORT",
+        desc: isPakistan 
+          ? "Dedicated deployment teams in Lahore, Karachi, Islamabad & Faisalabad, working on-site before and after go-live."
+          : "Operating across Pakistan, Dubai, and Texas, working in your time zone and language, before and long after go-live.",
+        tag: isPakistan ? "Lahore · Khi · Isb · Fsd" : "PK · UAE · US Hubs"
+      };
+    }
+    return p;
+  });
 
   // Scroll Trigger: Sequential Alternating Entrance (left, right, left, right...)
   useEffect(() => {
@@ -504,7 +521,7 @@ export default function WhyUsSection({ onOpenConsultation }) {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 overflow-hidden py-1">
-            {pillars.map((pillar, idx) => {
+            {activePillars.map((pillar, idx) => {
               const isFromLeft = idx % 2 === 0; // Card 1, 3, 5 from left; Card 2, 4, 6 from right
               const isVisible = idx < revealedPillars;
 
