@@ -181,7 +181,7 @@ export default function WhyUsSection({ onOpenConsultation }) {
             <h2 className="text-3xl sm:text-5xl lg:text-[54px] font-light tracking-tight text-dark leading-[1.14] sm:leading-[1.1]">
               Why businesses choose Qalibrate as their{' '}
               <span className="text-accent text-[1.06em] font-bold inline-block">Odoo partner</span>{' '}
-              across Pakistan, Dubai & Texas
+              {isPakistan ? "in Pakistan" : "across Pakistan, Dubai & Texas"}
             </h2>
 
             <p className="mt-4 text-base sm:text-lg text-dark/70 font-normal leading-relaxed">
@@ -458,13 +458,13 @@ export default function WhyUsSection({ onOpenConsultation }) {
               style={{ top: '280px', right: '0', width: '275px' }}
             >
               <div className="text-[10px] font-mono uppercase tracking-widest text-accent font-semibold mb-1">
-                {pillars[4].tag}
+                {activePillars[4].tag}
               </div>
               <h3 className="text-dark text-sm sm:text-base font-bold tracking-tight uppercase leading-snug mb-1 group-hover:text-accent transition-colors">
-                {pillars[4].title}
+                {activePillars[4].title}
               </h3>
               <p className="text-dark/70 text-xs font-normal leading-relaxed">
-                {pillars[4].desc}
+                {activePillars[4].desc}
               </p>
             </div>
 
