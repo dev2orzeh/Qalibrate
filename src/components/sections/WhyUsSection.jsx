@@ -90,9 +90,9 @@ export default function WhyUsSection({ onOpenConsultation }) {
         ...p,
         title: isPakistan ? "ON THE GROUND IN PAKISTAN" : "MULTI-REGION TEAM, REAL SUPPORT",
         desc: isPakistan 
-          ? "Dedicated deployment teams in Lahore, Karachi, Islamabad & Faisalabad, working on-site before and after go-live."
+          ? "Dedicated deployment teams in Lahore, Karachi & Islamabad, working on-site before and after go-live."
           : "Operating across Pakistan, Dubai, and Texas, working in your time zone and language, before and long after go-live.",
-        tag: isPakistan ? "Lahore · Khi · Isb · Fsd" : "PK · UAE · US Hubs"
+        tag: isPakistan ? "Lahore · Khi · Isb" : "PK · UAE · US Hubs"
       };
     }
     return p;

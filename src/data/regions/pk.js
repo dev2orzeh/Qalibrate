@@ -14,7 +14,7 @@ export const pkConfig = {
   metaDescription: "Official Odoo Enterprise Partner in Pakistan. Qalibrate implements, customizes and supports Odoo ERP for Pakistani enterprises with FBR digital invoicing and localized accounting.",
   h1: "Official Odoo Enterprise Partner in Pakistan",
   heroStatus: "Official Odoo Enterprise Partner · Pakistan Deployments",
-  subheading: "Qalibrate replaces scattered spreadsheets, disconnected software and manual reporting with one connected, institutional-grade Odoo ERP system. Engineered with fixed-scope delivery and on-site implementation across Lahore, Karachi, Islamabad, and Faisalabad.",
+  subheading: "Qalibrate replaces scattered spreadsheets, disconnected software and manual reporting with one connected, institutional-grade Odoo ERP system. Engineered with fixed-scope delivery and on-site implementation across Lahore, Karachi, and Islamabad.",
   
   partnerBadge: "Official Odoo Partner Pakistan",
   
@@ -23,7 +23,7 @@ export const pkConfig = {
     whatsappDisplay: "+92 300 1234567",
     email: "consult@qalibrate.com",
     address: "Islamabad · Lahore · Karachi",
-    citiesServed: ["Lahore", "Karachi", "Islamabad", "Faisalabad", "Rawalpindi", "Sialkot", "Multan"]
+    citiesServed: ["Lahore", "Karachi", "Islamabad"]
   },
 
   trustBar: [
@@ -52,25 +52,19 @@ export const pkConfig = {
       name: "Islamabad",
       detail: "Capital & Executive Office",
       svgIcon: islamabadSvg
-    },
-    {
-      id: "faisalabad",
-      name: "Faisalabad",
-      detail: "Textile & Manufacturing Hub",
-      svgIcon: faisalabadSvg
     }
   ],
 
   methodPillar: {
     title: "Dedicated Pakistani Deployment Teams",
-    desc: "Our senior architects and functional consultants deploy on-site at your facilities across Lahore, Karachi, Islamabad, and Faisalabad to train your operators in person in Urdu and English."
+    desc: "Our senior architects and functional consultants deploy on-site at your facilities across Lahore, Karachi, and Islamabad to train your operators in person in Urdu and English."
   },
 
   whyPillar5: {
     num: "05",
     tag: "Deployment",
     title: "On the ground across Pakistan",
-    desc: "We don't just ship software remotely. Our deployment teams sit with your department heads in Lahore, Karachi, Islamabad, and Faisalabad until daily operations run flawlessly."
+    desc: "We don't just ship software remotely. Our deployment teams sit with your department heads in Lahore, Karachi, and Islamabad until daily operations run flawlessly."
   },
 
   servicesHighlight: "Pakistan Ecosystem Ready (FBR Invoicing · Courier APIs · Local Payment Gateways)",
