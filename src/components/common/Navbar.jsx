@@ -13,7 +13,7 @@ export default function Navbar({ onOpenConsultation, onNavigateHome, currentView
     const handleScroll = () => {
       const currentY = window.scrollY;
       setScrolled(currentY > 60);
-      
+
       if (currentY > lastScrollY && currentY > 300) {
         setHidden(true);
       } else {
@@ -72,17 +72,17 @@ export default function Navbar({ onOpenConsultation, onNavigateHome, currentView
     <>
       <nav className={navClasses}>
         {/* Logo */}
-        <a 
-          href="#" 
-          className="q-nav-logo flex items-center gap-2.5 cursor-pointer" 
+        <a
+          href="#"
+          className="q-nav-logo flex items-center gap-2.5 cursor-pointer"
           onClick={handleHomeClick}
           title="Return to top"
         >
-          <img 
-            src="/logo-mark.png" 
-            alt="Qalibrate" 
+          <img
+            src="/logo-mark.png"
+            alt="Qalibrate"
           />
-          <span 
+          <span
             className="font-heading font-semibold text-base tracking-tight"
             style={{ color: scrolled || mobileMenuOpen ? '#fff' : 'var(--text-primary)' }}
           >
@@ -94,7 +94,7 @@ export default function Navbar({ onOpenConsultation, onNavigateHome, currentView
         <ul className="q-nav-links">
           {navLinks.map((link) => (
             <li key={link.name}>
-              <a 
+              <a
                 href={link.href}
                 onClick={(e) => {
                   if (currentView === 'booking') {
@@ -129,24 +129,24 @@ export default function Navbar({ onOpenConsultation, onNavigateHome, currentView
       </nav>
 
       {/* Mobile Menu Overlay — Outside nav to prevent backdrop-filter containment */}
-      <div 
+      <div
         className={`q-mobile-menu ${mobileMenuOpen ? 'q-mobile-menu--open' : ''}`}
         aria-hidden={!mobileMenuOpen}
       >
         <div className="flex flex-col items-center gap-8 px-6 text-center w-full max-w-sm">
           <ul className="q-mobile-menu-links">
             {navLinks.map((link, i) => (
-              <li 
+              <li
                 key={link.name}
-                style={{ 
+                style={{
                   transitionDelay: mobileMenuOpen ? `${0.08 + i * 0.04}s` : '0s',
                   opacity: mobileMenuOpen ? 1 : 0,
                   transform: mobileMenuOpen ? 'translateY(0)' : 'translateY(16px)',
                   transition: 'opacity 0.35s, transform 0.35s'
                 }}
               >
-                <a 
-                  href={link.href} 
+                <a
+                  href={link.href}
                   onClick={(e) => {
                     if (currentView === 'booking') {
                       e.preventDefault();
