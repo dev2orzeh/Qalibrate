@@ -111,30 +111,6 @@ export default function Navbar({ onOpenConsultation, onNavigateHome, currentView
 
         {/* Right CTA */}
         <div className="flex items-center gap-3 relative z-[1060]">
-          {/* Subtle Region Selector Switcher */}
-          <div className="hidden sm:flex items-center text-[10px] font-mono uppercase tracking-wider rounded-full border border-dark/15 px-1 py-0.5 bg-white/40">
-            <button
-              onClick={() => {
-                setRegionByPath('/');
-                window.history.pushState(null, '', '/');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className={`px-2 py-0.5 rounded-full transition-all ${!isPakistan ? 'bg-dark text-white font-semibold' : 'text-dark/60 hover:text-dark'}`}
-            >
-              Global
-            </button>
-            <button
-              onClick={() => {
-                setRegionByPath('/pk');
-                window.history.pushState(null, '', '/pk');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className={`px-2 py-0.5 rounded-full transition-all ${isPakistan ? 'bg-accent text-white font-semibold' : 'text-dark/60 hover:text-dark'}`}
-            >
-              PK
-            </button>
-          </div>
-
           <button onClick={onOpenConsultation} className="q-nav-cta">
             Book Consultation <span className="arrow">→</span>
           </button>

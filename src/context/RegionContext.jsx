@@ -1,44 +1,31 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { globalConfig } from '../data/regions/global';
 import { pkConfig } from '../data/regions/pk';
 
 const RegionContext = createContext({
-  region: globalConfig,
-  isPakistan: false,
+  region: pkConfig,
+  isPakistan: true,
   setRegionByPath: () => {},
 });
 
 export function RegionProvider({ children }) {
-  const [region, setRegion] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const path = window.location.pathname.toLowerCase();
-      if (path.startsWith('/pk')) {
-        return pkConfig;
-      }
-    }
-    return globalConfig;
-  });
+  // Always default to Pakistan
+  const [region, setRegion] = useState(pkConfig);
 
-  const setRegionByPath = (pathname) => {
-    const cleanPath = pathname.toLowerCase();
-    if (cleanPath.startsWith('/pk')) {
-      setRegion(pkConfig);
-    } else {
-      setRegion(globalConfig);
-    }
+  const setRegionByPath = () => {
+    setRegion(pkConfig);
   };
 
   useEffect(() => {
-    // Update document title dynamically based on active region
+    // Update document title dynamically
     if (typeof document !== 'undefined') {
-      document.title = region.siteTitle;
+      document.title = pkConfig.siteTitle;
     }
   }, [region]);
 
   return (
     <RegionContext.Provider value={{
       region,
-      isPakistan: region.regionCode === 'pk',
+      isPakistan: true,
       setRegionByPath
     }}>
       {children}
@@ -49,4 +36,3 @@ export function RegionProvider({ children }) {
 export function useRegion() {
   return useContext(RegionContext);
 }
-
